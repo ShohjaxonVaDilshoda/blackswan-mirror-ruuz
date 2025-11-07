@@ -74,3 +74,49 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animation utilities */
+  .animate-on-scroll {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-on-scroll-delay-1 {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.1s forwards;
+  }
+
+  .animate-on-scroll-delay-2 {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.2s forwards;
+  }
+
+  .animate-on-scroll-delay-3 {
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.3s forwards;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Gradient text animation */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

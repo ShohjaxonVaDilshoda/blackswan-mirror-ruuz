@@ -5,10 +5,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export const Contact = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,10 +50,11 @@ export const Contact = () => {
       style={{
         backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80')",
       }}
+      ref={ref}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/85 to-black/90"></div>
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-playfair">
             {t('contact.title')}
           </h2>
@@ -59,13 +62,15 @@ export const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <Card className="bg-card border-border">
+          <Card className={`bg-card border-border hover-lift transition-all duration-300 ${
+            isVisible ? 'animate-slide-in-left' : 'opacity-0'
+          }`} style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6 font-sans">
                 <div>
                   <Input
                     placeholder={t('contact.form.name')}
-                    className="bg-secondary border-border font-sans"
+                    className="bg-secondary border-border font-sans transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                     required
                   />
                 </div>
@@ -73,7 +78,7 @@ export const Contact = () => {
                   <Input
                     type="email"
                     placeholder={t('contact.form.email')}
-                    className="bg-secondary border-border font-sans"
+                    className="bg-secondary border-border font-sans transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                     required
                   />
                 </div>
@@ -81,20 +86,20 @@ export const Contact = () => {
                   <Input
                     type="tel"
                     placeholder={t('contact.form.phone')}
-                    className="bg-secondary border-border font-sans"
+                    className="bg-secondary border-border font-sans transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
                 <div>
                   <Textarea
                     placeholder={t('contact.form.message')}
                     rows={6}
-                    className="bg-secondary border-border font-sans"
+                    className="bg-secondary border-border font-sans transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-poppins uppercase tracking-wide"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-poppins uppercase tracking-wide transition-all duration-300 hover:scale-105"
                 >
                   {t('contact.form.submit')}
                 </Button>
@@ -106,10 +111,16 @@ export const Contact = () => {
             {contactInfo.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card key={index} className="bg-card border-border">
+                <Card 
+                  key={index} 
+                  className={`bg-card border-border hover-lift transition-all duration-300 group ${
+                    isVisible ? 'animate-slide-in-right' : 'opacity-0'
+                  }`}
+                  style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: 'both' }}
+                >
                   <CardContent className="p-6 flex items-start gap-4">
-                    <div className="w-12 h-12 bg-secondary flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 bg-secondary flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-110">
+                      <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-6" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-foreground mb-1 font-sans">{item.label}</h3>

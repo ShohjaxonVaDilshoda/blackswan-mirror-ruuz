@@ -15,10 +15,10 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border animate-fade-in-down">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-foreground font-playfair tracking-wider">
+          <div className="text-2xl font-bold text-foreground font-playfair tracking-wider transition-transform duration-300 hover:scale-105">
             <span className="text-primary">Law agency</span>
           </div>
 
@@ -72,7 +72,7 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
+          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 animate-fade-in-down">
             <button
               onClick={() => scrollToSection('home')}
               className="text-foreground hover:text-primary transition-colors text-left"

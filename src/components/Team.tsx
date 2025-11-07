@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 export const Team = () => {
   const { t } = useTranslation();
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   const team = [
     {
@@ -28,9 +30,9 @@ export const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-24 bg-background">
+    <section id="team" className="py-24 bg-background" ref={ref}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-playfair">
             {t('team.title')}
           </h2>
@@ -41,10 +43,13 @@ export const Team = () => {
           {team.map((member, index) => (
             <Card
               key={index}
-              className="bg-card border-border hover:border-primary transition-all duration-300 group"
+              className={`bg-card border-border hover:border-primary transition-all duration-300 group hover-lift ${
+                isVisible ? 'animate-fade-in-up' : 'opacity-0'
+              }`}
+              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
             >
               <CardContent className="p-0">
-                <div className="aspect-square bg-secondary flex items-center justify-center text-6xl font-bold text-primary/20 group-hover:text-primary/30 transition-colors">
+                <div className="aspect-square bg-secondary flex items-center justify-center text-6xl font-bold text-primary/20 group-hover:text-primary/30 transition-all duration-300 group-hover:scale-105">
                   {t(`team.members.${member.nameKey}.name`).charAt(0)}
                 </div>
                 <div className="p-6">

@@ -24,27 +24,28 @@ export const Hero = () => {
       
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-6">
+            <div className="mb-6 animate-fade-in-down">
               <span className="text-primary font-semibold font-sans text-sm tracking-[0.2em] uppercase">
                 25+ {t('hero.experience')}
               </span>
             </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight font-playfair">
+          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight font-playfair animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             {t('hero.title')}
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed font-sans font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed font-sans font-light animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
             {t('hero.subtitle')}
           </p>
           
           <Button
             size="lg"
             onClick={scrollToContact}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant text-lg px-8 py-6 group"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-elegant text-lg px-8 py-6 group animate-scale-in hover-lift"
+            style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
           >
             {t('hero.cta')}
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </div>
       </div>
