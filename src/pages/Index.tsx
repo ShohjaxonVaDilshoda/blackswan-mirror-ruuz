@@ -1,5 +1,6 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { AboutIntro } from '@/components/AboutIntro';
 import { Services } from '@/components/Services';
 import { About } from '@/components/About';
 // Team section removed per request
@@ -11,9 +12,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-  <Services />
-  <About />
-  <Contact />
+      <AboutIntro />
+      <Services />
+      <About />
+      <Contact />
       <Footer />
     </div>
   );

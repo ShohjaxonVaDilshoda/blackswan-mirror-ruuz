@@ -15,15 +15,16 @@ export default {
     extend: {
       fontFamily: {
         /*
-          Two main fonts:
-          - Headings: Times New Roman for elegant, professional look
-          - Body: Arial for clean, readable text
+          Professional fonts matching JRT Partnership style:
+          - Headings: Playfair Display for elegant, professional serif look
+          - Body: Lato for clean, modern, readable sans-serif text
+          - Fallbacks: Georgia for headings, Open Sans for body text
         */
-        'heading': ['Times New Roman', 'serif'],
-        /* keep aliases used in components */
-        'playfair': ['Times New Roman', 'serif'],
-        'serif': ['Times New Roman', 'serif'],
-        'sans': ['Arial', 'sans-serif'],
+        'heading': ['Playfair Display', 'Georgia', 'serif'],
+        'playfair': ['Playfair Display', 'Georgia', 'serif'],
+        'serif': ['Playfair Display', 'Georgia', 'serif'],
+        'sans': ['Lato', 'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'poppins': ['Lato', 'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

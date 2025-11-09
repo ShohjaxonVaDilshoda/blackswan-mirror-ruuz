@@ -13,7 +13,6 @@ export const LanguageSwitcher = () => {
 
   const languages = [
     { code: 'en', name: 'English' },
-    { code: 'ru', name: 'Русский' },
     { code: 'uz', name: "O'zbek" },
   ];
 

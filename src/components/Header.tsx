@@ -18,8 +18,20 @@ export const Header = () => {
   <header className="fixed top-0 left-0 right-0 z-50 site-header bg-secondary text-white shadow-md animate-fade-in-down">
       <nav className="container mx-auto py-4">
         <div className="flex items-center justify-between">
-          <div className="text-lg sm:text-2xl font-bold tracking-wider transition-transform duration-300 hover:scale-105">
-            <span className="text-white">Justice Capital</span>
+          <div className="relative flex items-center justify-center transition-transform duration-300 hover:scale-105 cursor-pointer" onClick={() => scrollToSection('home')}>
+            {/* Main logo content */}
+            <div className="relative flex flex-col items-center justify-center z-10">
+              {/* Top line - extends beyond text */}
+              <div className="w-[140%] h-[0.5px] bg-white mb-2"></div>
+              
+              {/* Logo text */}
+              <div className="text-xs sm:text-sm md:text-base font-normal tracking-[0.25em] uppercase text-white font-serif whitespace-nowrap px-2">
+                JUSTICE CAPITAL
+              </div>
+              
+              {/* Bottom line - extends beyond text */}
+              <div className="w-[140%] h-[0.5px] bg-white mt-2"></div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

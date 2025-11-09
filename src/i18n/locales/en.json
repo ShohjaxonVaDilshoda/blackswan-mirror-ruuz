@@ -12,6 +12,10 @@
     "cta": "Get Consultation",
     "experience": "Years of Excellence"
   },
+  "aboutIntro": {
+    "title": "Justice Capital creating the difference",
+    "description": "We aim to foster long term relationships with individuals, businesses and organisations of all sizes by combining a genuine interest in each client's circumstances and goals with an adaptable, approachable and accessible service model."
+  },
   "services": {
     "title": "Our Services",
     "subtitle": "Comprehensive legal solutions tailored to your needs",
@@ -95,7 +99,7 @@
     }
   },
   "footer": {
-  "description": "Justice Capital - Excellence in legal services since 1995",
+    "description": "Justice Capital - Excellence in legal services",
   "copyright": "© 2025 Justice Capital. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"

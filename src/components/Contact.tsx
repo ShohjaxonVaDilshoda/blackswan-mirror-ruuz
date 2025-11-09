@@ -46,10 +46,10 @@ export const Contact = () => {
     >
       <div className="container mx-auto px-6 relative z-10">
         <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+          <h2 className="text-4xl md:text-5xl font-normal text-secondary mb-4 font-serif">
             {t('contact.title')}
           </h2>
-          <p className="text-xl text-secondary/80">{t('contact.subtitle')}</p>
+          <p className="text-xl text-secondary/80 font-sans">{t('contact.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -115,7 +115,7 @@ export const Contact = () => {
                       <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-6" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-secondary mb-1 font-serif">{item.label}</h3>
+                      <h3 className="text-lg font-normal text-secondary mb-1 font-serif">{item.label}</h3>
                       <p className="text-secondary/80 font-sans">{item.value}</p>
                     </div>
                   </CardContent>
@@ -135,7 +135,7 @@ export const Contact = () => {
                       <Linkedin className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-secondary mb-1">LinkedIn</h3>
+                        <h3 className="text-lg font-normal text-secondary mb-1">LinkedIn</h3>
                       <p className="text-secondary/80">
                         <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Visit our LinkedIn</a>
                       </p>
@@ -147,7 +147,7 @@ export const Contact = () => {
                       <Instagram className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-secondary mb-1">Instagram</h3>
+                        <h3 className="text-lg font-normal text-secondary mb-1">Instagram</h3>
                       <p className="text-secondary/80">
                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Follow us on Instagram</a>
                       </p>
@@ -159,7 +159,7 @@ export const Contact = () => {
                       <Send className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-secondary mb-1">Telegram</h3>
+                        <h3 className="text-lg font-normal text-secondary mb-1">Telegram</h3>
                       <p className="text-secondary/80">
                         <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Join us on Telegram</a>
                       </p>
