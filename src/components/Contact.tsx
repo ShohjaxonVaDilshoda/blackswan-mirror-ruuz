@@ -56,41 +56,42 @@ export const Contact = () => {
           <Card className={`bg-white shadow-lg border-accent/20 hover-lift transition-all duration-300 ${
             isVisible ? 'animate-slide-in-left' : 'opacity-0'
           }`} style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6 font-sans">
-                <div>
-                  <Input
-                    placeholder={t('contact.form.name')}
-                    className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    required
-                  />
+            <CardContent className="p-8 h-full flex flex-col">
+              <form onSubmit={handleSubmit} className="flex flex-col h-full font-sans">
+                <div className="space-y-6">
+                  <div>
+                    <Input
+                      placeholder={t('contact.form.name')}
+                      className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder={t('contact.form.email')}
+                      className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="tel"
+                      placeholder={t('contact.form.phone')}
+                      className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder={t('contact.form.email')}
-                    className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="tel"
-                    placeholder={t('contact.form.phone')}
-                    className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-                <div>
+                <div className="flex-1 flex flex-col mt-6">
                   <Textarea
                     placeholder={t('contact.form.message')}
-                    rows={6}
-                    className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 flex-1 resize-none"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105"
+                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105 mt-6"
                 >
                   {t('contact.form.submit')}
                 </Button>
