@@ -104,29 +104,29 @@ export const Contact = () => {
   return (
     <section 
       id="contact" 
-      className="py-20 md:py-24 relative overflow-hidden bg-accent/30"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden bg-accent/30"
       ref={ref}
     >
-      <div className="container mx-auto px-6 relative z-10">
-        <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
-          <h2 className="text-4xl md:text-5xl font-normal text-secondary mb-4 font-serif">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className={`text-center mb-8 sm:mb-10 md:mb-12 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-secondary mb-3 sm:mb-4 font-serif">
             {t('contact.title')}
           </h2>
         </div>
 
-        <div className={`max-w-4xl mx-auto mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-          <p className="text-lg text-secondary/80 leading-relaxed font-sans text-center">
+        <div className={`max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-16 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+          <p className="text-base sm:text-lg text-secondary/80 leading-relaxed font-sans text-center">
             {t('contact.intro')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
           <Card className={`bg-white shadow-lg border-accent/20 hover-lift transition-all duration-300 ${
             isVisible ? 'animate-slide-in-left' : 'opacity-0'
           }`} style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <CardContent className="p-8 h-full flex flex-col">
+            <CardContent className="p-6 sm:p-8 h-full flex flex-col">
               <form onSubmit={handleSubmit} className="flex flex-col h-full font-sans">
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div>
                     <Input
                       name="name"
@@ -156,7 +156,7 @@ export const Contact = () => {
                     />
                   </div>
                 </div>
-                <div className="flex-1 flex flex-col mt-6">
+                <div className="flex-1 flex flex-col mt-4 sm:mt-6">
                   <Textarea
                     name="message"
                     placeholder={t('contact.form.message')}
@@ -167,7 +167,7 @@ export const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105 mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105 mt-4 sm:mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                 </Button>
@@ -175,7 +175,7 @@ export const Contact = () => {
             </CardContent>
           </Card>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {contactInfo.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -186,13 +186,13 @@ export const Contact = () => {
                   }`}
                   style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: 'both' }}
                 >
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <div className="w-12 h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg transition-all duration-300 group-hover:bg-accent/50 group-hover:scale-110">
-                      <Icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-6" />
+                  <CardContent className="p-5 sm:p-6 flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg transition-all duration-300 group-hover:bg-accent/50 group-hover:scale-110">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary transition-transform duration-300 group-hover:rotate-6" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-normal text-secondary mb-1 font-serif">{item.label}</h3>
-                      <p className="text-secondary/80 font-sans">{item.value}</p>
+                      <h3 className="text-base sm:text-lg font-normal text-secondary mb-1 font-serif">{item.label}</h3>
+                      <p className="text-sm sm:text-base text-secondary/80 font-sans">{item.value}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -205,38 +205,38 @@ export const Contact = () => {
                 }`}
                 style={{ animationDelay: `${0.3 + contactInfo.length * 0.1}s`, animationFillMode: 'both' }}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
-                      <Linkedin className="w-6 h-6 text-primary" />
+                <CardContent className="p-5 sm:p-6">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
+                      <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <div>
-                        <h3 className="text-lg font-normal text-secondary mb-1">LinkedIn</h3>
-                      <p className="text-secondary/80">
+                        <h3 className="text-base sm:text-lg font-normal text-secondary mb-1">LinkedIn</h3>
+                      <p className="text-sm sm:text-base text-secondary/80">
                         <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Visit our LinkedIn</a>
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-4 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
-                      <Instagram className="w-6 h-6 text-primary" />
+                  <div className="mt-3 sm:mt-4 flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
+                      <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <div>
-                        <h3 className="text-lg font-normal text-secondary mb-1">Instagram</h3>
-                      <p className="text-secondary/80">
+                        <h3 className="text-base sm:text-lg font-normal text-secondary mb-1">Instagram</h3>
+                      <p className="text-sm sm:text-base text-secondary/80">
                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Follow us on Instagram</a>
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-4 flex items-center gap-4">
-                    <div className="w-12 h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
-                      <Send className="w-6 h-6 text-primary" />
+                  <div className="mt-3 sm:mt-4 flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/30 flex items-center justify-center flex-shrink-0 rounded-lg">
+                      <Send className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
                     <div>
-                        <h3 className="text-lg font-normal text-secondary mb-1">Telegram</h3>
-                      <p className="text-secondary/80">
+                        <h3 className="text-base sm:text-lg font-normal text-secondary mb-1">Telegram</h3>
+                      <p className="text-sm sm:text-base text-secondary/80">
                         <a href="https://t.me/" target="_blank" rel="noopener noreferrer" className="hover:text-primary">Join us on Telegram</a>
                       </p>
                     </div>

@@ -137,7 +137,7 @@
     "intro": "Share a brief outline of your dispute, award or enforcement matter. Our team will review the information confidentially and respond with potential funding options and next steps.",
     "form": {
       "name": "Full Name",
-      "email": "Email Address",
+      "email": "Email",
       "phone": "Phone Number",
       "message": "Message",
       "submit": "Send Message",

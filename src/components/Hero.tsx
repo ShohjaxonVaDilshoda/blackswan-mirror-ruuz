@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import buildingImage from './building.png';
+import buildingImage from './night-building.png';
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -29,10 +29,10 @@ export const Hero = () => {
       </div>
 
       {/* Правая часть с текстом */}
-      <div className="w-full lg:w-1/2 bg-primary flex items-center justify-center px-6 py-20 lg:py-0 order-2">
+      <div className="w-full lg:w-1/2 bg-primary flex items-center justify-center px-4 sm:px-6 py-16 sm:py-20 lg:py-0 order-2">
         <div className="max-w-xl mx-auto lg:mx-0 lg:mr-auto lg:ml-20">
           {/* Mobile: show image inside the content area (hidden on lg and up) */}
-          <div className="mb-6 lg:hidden">
+          <div className="mb-4 sm:mb-6 lg:hidden">
             <img
               src={buildingImage}
               alt="Office building"
@@ -40,15 +40,15 @@ export const Hero = () => {
             />
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 sm:mb-8 leading-tight animate-fade-in-up font-serif" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-4 sm:mb-6 md:mb-8 leading-tight animate-fade-in-up font-serif" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
             {t('hero.title')}
           </h1>
           
-          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 leading-relaxed font-light animate-fade-in-up max-w-lg font-sans" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-3 sm:mb-4 md:mb-6 leading-relaxed font-light animate-fade-in-up max-w-lg font-sans" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
             {t('hero.subtitle')}
           </p>
           
-          <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-12 leading-relaxed font-light animate-fade-in-up max-w-lg font-sans" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+          <p className="text-sm sm:text-base md:text-lg text-white/90 mb-4 sm:mb-6 md:mb-12 leading-relaxed font-light animate-fade-in-up max-w-lg font-sans" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
             {t('hero.paragraph')}
           </p>
           
