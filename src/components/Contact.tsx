@@ -6,18 +6,81 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Phone, Mail, Clock, Linkedin, Instagram, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
+import { useState } from 'react';
 
 export const Contact = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Разрешаем только цифры
+    const value = e.target.value.replace(/\D/g, '');
+    e.target.value = value;
+  };
+
+  const handlePhoneKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Разрешаем: цифры, Backspace, Delete, Tab, Arrow keys, Home, End
+    const allowedKeys = [
+      'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+      'Home', 'End'
+    ];
+    
+    // Разрешаем Ctrl/Cmd + A, C, V, X для выделения, копирования, вставки и вырезания
+    if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) {
+      return;
+    }
+    
+    // Если это не разрешенная клавиша и не цифра, блокируем
+    if (!allowedKeys.includes(e.key) && !/^\d$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: 'Message sent!',
-      description: 'We will get back to you as soon as possible.',
-    });
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xkgkwazb', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        toast({
+          title: t('contact.success.title'),
+          description: t('contact.success.description'),
+        });
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          toast({
+            title: 'Error',
+            description: data.errors.map((error: any) => error.message).join(', '),
+            variant: 'destructive',
+          });
+        } else {
+          throw new Error('Form submission failed');
+        }
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -34,7 +97,7 @@ export const Contact = () => {
     {
       icon: Mail,
       label: t('contact.info.email'),
-      value: 'contact@justicecapita.uz',
+      value: 'contact@justicecapital.uz',
     },
   ];
 
@@ -61,6 +124,7 @@ export const Contact = () => {
                 <div className="space-y-6">
                   <div>
                     <Input
+                      name="name"
                       placeholder={t('contact.form.name')}
                       className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                       required
@@ -69,6 +133,7 @@ export const Contact = () => {
                   <div>
                     <Input
                       type="email"
+                      name="email"
                       placeholder={t('contact.form.email')}
                       className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                       required
@@ -77,13 +142,18 @@ export const Contact = () => {
                   <div>
                     <Input
                       type="tel"
+                      name="phone"
                       placeholder={t('contact.form.phone')}
                       className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                      onChange={handlePhoneChange}
+                      onKeyDown={handlePhoneKeyDown}
+                      inputMode="numeric"
                     />
                   </div>
                 </div>
                 <div className="flex-1 flex flex-col mt-6">
                   <Textarea
+                    name="message"
                     placeholder={t('contact.form.message')}
                     className="bg-white border border-gray-200 placeholder-gray-500 transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 flex-1 resize-none"
                     required
@@ -91,9 +161,10 @@ export const Contact = () => {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105 mt-6"
+                  disabled={isSubmitting}
+                  className="w-full bg-secondary text-white hover:bg-secondary/90 font-sans uppercase tracking-wide transition-all duration-300 hover:scale-105 mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t('contact.form.submit')}
+                  {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                 </Button>
               </form>
             </CardContent>

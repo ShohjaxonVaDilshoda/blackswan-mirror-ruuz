@@ -87,7 +87,12 @@
       "email": "Elektron pochta",
       "phone": "Telefon raqami",
       "message": "Xabar",
-      "submit": "Xabar yuborish"
+      "submit": "Xabar yuborish",
+      "submitting": "Yuborilmoqda..."
+    },
+    "success": {
+      "title": "Xabar yuborildi!",
+      "description": "Biz sizga imkon qadar tezroq javob beramiz."
     },
     "info": {
       "address": "Manzil",
